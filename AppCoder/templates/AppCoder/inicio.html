@@ -1,0 +1,28 @@
+{% extends "AppCoder/padre.html" %}
+{% block titulo %}
+<h1>¡Bienvenido! Éste es mi Sitio Web.</h1>
+<h2><a>En la parte superior encontrará secciones en las que podrá agregar lo que desee a su lista.</h2><a>
+<br><h2>Debajo encontrará un buscador de Libros por genero.</h2></br> 
+<h1> &#x2193;</h1>
+{% endblock %}
+
+
+{% block contenidoQCambia %}
+
+<form action="/AppCoder/resultado/" method="GET">
+    <input type="text" name="genero", id="genero">
+   
+    <input type="submit" value="Buscar">
+</form>
+
+<p>Estamos buscando el genero: {{genero}}</p>
+{% if libros %}
+    <u1>
+        {% for genero in libros %}
+            <p>Titulo: {{genero.titulo}} ---- Genero: {{genero.genero}} ----- Escritor: {{genero.escritor}}</p>
+        {% endfor %}
+    </u1>
+{% else %}
+    <p>No se encontró ningún Libro con ese género. Intente nuevamente</p>
+{% endif %}    
+{% endblock %}
